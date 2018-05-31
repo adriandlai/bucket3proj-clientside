@@ -1,4 +1,5 @@
 
 .Menu_Items{
     display: flex;
+    flex-direction: row;
 }
