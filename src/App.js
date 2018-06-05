@@ -5,6 +5,7 @@ import Menu from './components/Menu.js';
 import Cart from './components/Cart.js';
 import Footer from './components/Footer.js';
 import Header from './components/Header.js';
+import Checkout from './components/Checkout';
 
 class App extends Component {
   state = {
@@ -20,7 +21,9 @@ class App extends Component {
     )
   }
 
-  fetchMenu() {
+  // updateTotal = (car) =>
+
+  fetchMenu = () => {
     const apiURL = 'http://localhost:3000/menu';
 
     return fetch(apiURL)
@@ -32,8 +35,7 @@ class App extends Component {
       .catch((err) => console.log('err', err))
   }
 
-  ///just noticed not binded...don't need to cuz not passed down?
-  fetchCart() {
+  fetchCart = () => {
     const apiURL = 'http://localhost:3000/cart';
 
     return fetch(apiURL)
@@ -54,6 +56,7 @@ class App extends Component {
   render() {
     const isMenuLoaded = this.state.isMenuLoaded
     const isCartLoaded = this.state.isCartLoaded
+    
     return (
     <div>
       <Header />
@@ -61,6 +64,11 @@ class App extends Component {
         {isMenuLoaded && <Menu menu={this.state.menu} updateCart = {this.updateCart} />}
         {isCartLoaded && <Cart cart = {this.state.cart}/>}
       </main>
+      <Checkout
+            name={'The Road to learn React'}
+            description={'Only the Book'}
+            amount={1}
+        />
       <Footer />
     </div>
     );
