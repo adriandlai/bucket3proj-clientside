@@ -8,16 +8,24 @@ class Menu extends Component {
         super(props);
     }
 
-    determinAddorSubtract = (sign) => {
-        
+    determinAddorSubtract = (e) => {
+
+       const url = (e.target.innerText == '+') ? `http://localhost:3000/cart/add/${e.target.id}` : `http://localhost:3000/cart/delete/${e.target.id}`
+       console.log('url', url)
+       return url
+    
     }
+
     addItem = (e) => {
+    console.log('innertext', e.target.innerText) 
+    // this.determinAddorSubtract(e)
+    // const url = `http://localhost:3000/cart/add/${e.target.id}`
+    // const url = `http://localhost:3000/cart/delete/${e.target.id}`
 
-        
-    console.log('innertext', e.target.innerText)    
-
-
-    const url = `http://localhost:3000/cart/add/${e.target.id}`
+    const url = this.determinAddorSubtract(e)   
+   
+    // const url = `http://localhost:3000/cart/add/${e.target.id}`
+    
 
     let content = {
         id: e.target.id,
@@ -79,7 +87,7 @@ class Menu extends Component {
                 <Card.Content extra>
                   <div className='ui two buttons'>
                     <Button basic color='green' onClick = {this.addItem} id ={item.productkey}>+</Button>
-                    <Button basic color='red'>-</Button>
+                    <Button basic color='red' onClick = {this.addItem} id ={item.productkey}>-</Button>
                   </div>
                 </Card.Content>
               </Card>
