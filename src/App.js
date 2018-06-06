@@ -6,6 +6,7 @@ import Cart from './components/Cart.js';
 import Footer from './components/Footer.js';
 import Header from './components/Header.js';
 import Checkout from './components/Checkout';
+import MyForm from './components/Review';
 
 class App extends Component {
   state = {
@@ -70,6 +71,7 @@ class App extends Component {
             amount={this.state.cart.total}
             total={this.state.cart.total}
         />
+      <MyForm/>
       <Footer />
     </div>
     );
