@@ -8,8 +8,7 @@ class Cart extends Component {
     logit = (item) => {
         console.log('item', item)
     }
-    // {isCartLoaded && <Cart cart = {this.state.cart}/>}    
-
+        
     render() {
     
       
@@ -28,10 +27,11 @@ class Cart extends Component {
             )}
             else {return null}
           })}
+            <div>Total= $ {this.props.cart.total}</div>         
             </section>
+            
     )
 }
-}
-            
+}         
 
 export default Cart;

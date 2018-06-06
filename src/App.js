@@ -67,7 +67,8 @@ class App extends Component {
       <Checkout
             name={'The Road to learn React'}
             description={'Only the Book'}
-            amount={1}
+            amount={this.state.cart.total}
+            total={this.state.cart.total}
         />
       <Footer />
     </div>

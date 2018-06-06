@@ -18,14 +18,8 @@ class Menu extends Component {
 
     addItem = (e) => {
     console.log('innertext', e.target.innerText) 
-    // this.determinAddorSubtract(e)
-    // const url = `http://localhost:3000/cart/add/${e.target.id}`
-    // const url = `http://localhost:3000/cart/delete/${e.target.id}`
-
-    const url = this.determinAddorSubtract(e)   
-   
-    // const url = `http://localhost:3000/cart/add/${e.target.id}`
-    
+  
+    const url = this.determinAddorSubtract(e)     
 
     let content = {
         id: e.target.id,
@@ -44,6 +38,8 @@ class Menu extends Component {
       })
       .then(resp => resp.json())
       .then(data => { 
+        console.log('dataFE', data)
+        console.log('data.cart', data.cart)
         this.props.updateCart(data)  
       })
       .catch(function(error) {
