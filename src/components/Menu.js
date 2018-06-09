@@ -59,7 +59,7 @@ class Menu extends Component {
         // const addItem = this.addItem()
         return (
             <section>
-                <h2>Menu Items</h2>
+                <h1 className = "menuItems">Menu Items</h1>
         <ul id="Menu_Items">
         {/* <Card.Group itemsPerRow = '3'> */}
         <Card.Group itemsPerRow = '3'>

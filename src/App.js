@@ -22,8 +22,6 @@ class App extends Component {
     )
   }
 
-  // updateTotal = (car) =>
-
   fetchMenu = () => {
     const apiURL = 'http://localhost:3000/menu';
 

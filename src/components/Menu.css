@@ -3,3 +3,14 @@
     display: flex;
     flex-direction: row;
 }
+
+.menuItems{
+    font-size: 80px;
+    display: flex;
+    justify-content: center
+
+}
+
+Card{
+    
+}

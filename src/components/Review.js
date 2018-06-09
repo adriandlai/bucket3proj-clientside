@@ -106,11 +106,11 @@ class MyForm extends React.Component {
       //   }
       })
       .then(resp => resp.json())
-      .then(reviews => {
-        console.log('didthisdelet?', reviews) 
-        // this.setState(
-        //   {allReviews}
-        // )
+      .then(allReviews => {
+        console.log('didthisdelet?', allReviews) 
+        this.setState(
+          {allReviews}
+        )
         // console.log('allrevies',this.state.allReviews)
       })
       .catch(function(error) {
