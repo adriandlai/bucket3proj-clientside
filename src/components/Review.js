@@ -6,7 +6,8 @@ class MyForm extends React.Component {
         super(props);
         this.state = {name: '',
                       review:'',
-                      allReviews:''
+                      allReviews:'',
+                      isLoaded: false
                     };
     
         this.handleChange = this.handleChange.bind(this);
@@ -16,8 +17,9 @@ class MyForm extends React.Component {
 
 
       post = (data) => {
-       console.log('insidepostdata', data)
-       const url = 'http://localhost:3000/reviews'
+
+
+      const url = 'http://localhost:3000/reviews'
       let content = {
         name: data.name,
         review: data.review,
@@ -26,19 +28,20 @@ class MyForm extends React.Component {
 
       console.log('contnet', content)
       fetch(url, {
-        method: 'put',
+        method: 'POST',
+        body: JSON.stringify(content),
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: JSON.stringify(content)
-  
+          'Content-Type': 'application/json'
+        }
       })
       .then(resp => resp.json())
-      .then(data => { 
-        //set state here
-        // this.props.updateCart(data) 
-        console.log('ReviewReponse', data) 
+      .then(allReviews => {
+        console.log('allreviews?', allReviews) 
+        this.setState(
+          {allReviews}
+        )
+        console.log('allrevies',this.state.allReviews)
       })
       .catch(function(error) {
         console.log('error')
@@ -46,21 +49,83 @@ class MyForm extends React.Component {
     
     }
 
-
-
       handleChange(event) {
         this.setState({ [event.target.name]: event.target.value })
-        console.log('handlechange', this.state.value)
+        console.log('name', this.state.name)
+        console.log('review', this.state.review)
       }
     
       handleSubmit(event) {
-        // alert('A name was submitted: ' + this.state);
+        // alert('A name was submitted: ' + this.state)
         this.post(this.state)
         event.preventDefault();
       }
+
+      fetchReviews = () => {
+        const apiURL = 'http://localhost:3000/reviews';
+    
+        return fetch(apiURL)
+          .then(response => response.json())
+          .then(allReviews => {
+            console.log('allreviewsFETCH', allReviews)
+            // console.log('allreviewsIndex', allReviews.reviews[0])
+            this.setState({allReviews,
+                          isLoaded: true
+                            })
+          })
+          .catch((err) => console.log('err', err))
+      }
+
+      deleteReview = (e) => {
+      console.log('ids', e)
+      console.log('etarget', e.target)
+      console.log('etarget', e.target.id)
+
+      const url = `http://localhost:3000/reviews/${e.target.id}`
+
+      // let content = {
+      //   name: data.name,
+      //   review: data.review,
+        
+      // };
+
+      // function deleteData(item, url) {
+      //   return fetch(url + '/' + item, {
+      //     method: 'delete'
+      //   })
+      //   .then(response => response.json());
+      // }
+
+      // console.log('contnet', content)
+      fetch(url, {
+        method: 'delete',
+      //   body: JSON.stringify(content),
+      //   headers: {
+      //     'Accept': 'application/json',
+      //     'Content-Type': 'application/json'
+      //   }
+      })
+      .then(resp => resp.json())
+      .then(reviews => {
+        console.log('didthisdelet?', reviews) 
+        // this.setState(
+        //   {allReviews}
+        // )
+        // console.log('allrevies',this.state.allReviews)
+      })
+      .catch(function(error) {
+        console.log('error')
+      })
+      }
+
+      componentDidMount() {
+        this.fetchReviews()
+      }
     
       render() {
+        const isLoaded = this.state.isLoaded
         return (
+          <div>
           <form onSubmit={this.handleSubmit}>
           <label>Wass yo name?!?!? </label>  
               <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
@@ -70,44 +135,30 @@ class MyForm extends React.Component {
               <input type="text" name="review" value={this.state.review} onChange={this.handleChange} />
             <input type="submit" value="Submit" />
           </form>
-        );
+            <ul>
+            {isLoaded && this.state.allReviews.reviews.map((item, index) => {
+              return (
+                <div>
+                <li key={index}>
+                  <h4>{item.name}</h4>
+                  <small>{item.review} </small>
+                </li>
+                {/* <button id = {item.id} 
+                onClick ={this.deleteReview(item.id)}
+                >Delete Me</button> */}
+                <button id = {item.id} 
+                onClick ={this.deleteReview}
+                >Delete Me</button>
+                </div>
+              )
+            })}
+           </ul>
+          </div>         
+        
+        )
+
       }
-
-    //   <label htmlFor="title">Title</label>
-    //   <input onChange={this.handleChange} type="text" name="title" value={this.state.title} />
-    //   <label htmlFor="pay">Compensation</label>
-    //   <input onChange={this.handleChange} type="text" name="pay" value={this.state.pay} />
-
-
-
-
-    // constructor() {
-    //   super();
-    //   this.handleSubmit = this.handleSubmit.bind(this);
-    // }
-  
-    // handleSubmit(event) {
-    //   event.preventDefault();
-    //   console.log('eventarge', event.target)
-    //   const data = new FormData(event.target);
-    //   console.log('formdata', data)
-    // //   fetch('/api/form-submit-url', {
-    // //     method: 'POST',
-    // //     body: data,
-    // //   });
-    // }
-  
-    // render() {
-    //   return (
-    //     <form onSubmit={this.handleSubmit}>
-    //       <label htmlFor="username">Enter username</label>
-    //       <input id="username" name="username" type="text" />
-    //       <label htmlFor="email">Submit Your Review</label>
-    //       <input id="email" name="review" type="text" />
-    //       <button>Submit My Review</button>
-    //     </form>
-    //   );
-    // }
   }
 
   export default MyForm;
+

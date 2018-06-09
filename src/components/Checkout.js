@@ -9,7 +9,7 @@ const CURRENCY = 'EUR';
 
 // const fromEuroToCent = amount => amount * 100;
 
-const fromEuroToCent = amount => amount * 100;
+const fromEuroToCent = amount => parseInt(amount * 100);
 
 
 const successPayment = data => {

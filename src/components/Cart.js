@@ -5,13 +5,9 @@ class Cart extends Component {
         super(props);
     }
 
-    logit = (item) => {
-        console.log('item', item)
-    }
         
     render() {
-    
-      
+     
         return (
             <section>
                  {this.props.cart.cart.map(function (item, index) {
@@ -27,7 +23,7 @@ class Cart extends Component {
             )}
             else {return null}
           })}
-            <div>Total= $ {this.props.cart.total}</div>         
+            <div>Total = {this.props.cart.total}</div>         
             </section>
             
     )
