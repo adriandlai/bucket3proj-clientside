@@ -61,7 +61,6 @@ class Menu extends Component {
             <section>
                 <h1 className = "menuItems">Menu Items</h1>
         <ul id="Menu_Items">
-        {/* <Card.Group itemsPerRow = '3'> */}
         <Card.Group itemsPerRow = '3'>
           {this.props.menu.menu.map((item, index) => {
             return (    
