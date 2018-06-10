@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Menu from './components/Menu.js';
 import Cart from './components/Cart.js';
+import Carts from './components/Carts.js';
 import Footer from './components/Footer.js';
 import Header from './components/Header.js';
 import Checkout from './components/Checkout';
@@ -61,7 +62,8 @@ class App extends Component {
       <Header />
       <main>
         {isMenuLoaded && <Menu menu={this.state.menu} updateCart = {this.updateCart} />}
-        {isCartLoaded && <Cart cart = {this.state.cart}/>}
+        {/* {isCartLoaded && <Cart cart = {this.state.cart}/>} */}
+        {isCartLoaded && <Carts cart = {this.state.cart}/>}
       </main>
       <Checkout
             name={'The Road to learn React'}
@@ -69,6 +71,7 @@ class App extends Component {
             amount={this.state.cart.total}
             total={this.state.cart.total}
         />
+       
       <MyForm/>
       <Footer />
     </div>
