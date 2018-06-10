@@ -26,7 +26,7 @@ render() {
             <Table.Row>          
                 <Table.Cell>{item.product_name}</Table.Cell>
                 <Table.Cell>{item.quantity}</Table.Cell>
-                <Table.Cell>{item.price * item.quantity}</Table.Cell>
+                <Table.Cell>{(item.price * item.quantity).toFixed(2)}</Table.Cell>
             </Table.Row>
               )
           }
@@ -39,7 +39,7 @@ render() {
         <Table.HeaderCell colSpan='3'>
           <Menu floated='right' pagination>
             <Menu.Item as='a' icon>Total</Menu.Item>
-            <Menu.Item as='a'>{this.props.cart.total}</Menu.Item>
+            <Menu.Item as='a'>{(this.props.cart.total)}</Menu.Item>
           </Menu>
         </Table.HeaderCell>
       </Table.Row>
