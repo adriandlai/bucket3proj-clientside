@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Header, Table, Rating, Button, Icon } from 'semantic-ui-react'
+import { Header, Table, Form, Input, TextArea, Button, Icon } from 'semantic-ui-react'
+
 
 class Reviews extends React.Component {
     constructor(props) {
@@ -59,6 +60,7 @@ class Reviews extends React.Component {
         // alert('A name was submitted: ' + this.state)
         this.post(this.state)
         event.preventDefault();
+        // this.clear
       }
 
       fetchReviews = () => {
@@ -106,7 +108,14 @@ class Reviews extends React.Component {
         const isLoaded = this.state.isLoaded
         return (
           <div>
-          <form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmit}>
+              <Form.Input fluid label='First name' placeholder='Name' 
+              name= "name" value={this.state.name} onChange={this.handleChange}/>
+              <Form.TextArea label='Review' placeholder='Tell us what you think'
+               name="review" value={this.state.review} onChange={this.handleChange} />
+              <Form.Button>Submit Your Review</Form.Button>
+            </Form>
+          {/* <form onSubmit={this.handleSubmit}>
           <label>Wass yo name?!?!? </label>  
               <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
             <label>
@@ -114,7 +123,7 @@ class Reviews extends React.Component {
               </label>  
               <input type="text" name="review" value={this.state.review} onChange={this.handleChange} />
             <input type="submit" value="Submit" />
-          </form>
+          </form> */}
             <Table celled padded>
                 <Table.Header>
                     <Table.Row>

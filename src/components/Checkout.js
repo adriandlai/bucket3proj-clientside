@@ -6,7 +6,9 @@ import './Checkout.css';
 import STRIPE_PUBLISHABLE from '../constants/stripe';
 import PAYMENT_SERVER_URL from '../constants/server';
 
-const CURRENCY = 'EUR';
+// const CURRENCY = 'EUR';
+const CURRENCY = 'usd';
+
 
 // const fromEuroToCent = amount => amount * 100;
 
@@ -34,6 +36,9 @@ const onToken = (amount, description) => token =>
     .catch(errorPayment);
 
 const Checkout = ({ name, description, amount }) =>
+{
+  return(
+<div className="buttonContainer">
   <StripeCheckout
     name={name}
     description={description}
@@ -42,5 +47,8 @@ const Checkout = ({ name, description, amount }) =>
     currency={CURRENCY}
     stripeKey={STRIPE_PUBLISHABLE}
   />
+ </div> 
+  )
+}
 
 export default Checkout;

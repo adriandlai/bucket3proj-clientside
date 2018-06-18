@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Menu from './components/Menu.js';
-import Cart from './components/Cart.js';
+// import Cart from './components/Cart.js';
 import Carts from './components/Carts.js';
 import Footer from './components/Footer.js';
 import Header from './components/Header.js';
@@ -19,6 +19,8 @@ class App extends Component {
   }
 
   updateCart = (cart) => {
+    console.log('cart', cart)
+    console.log('cartJsx', typeof cart.total)
     this.setState(
       {cart}
     )

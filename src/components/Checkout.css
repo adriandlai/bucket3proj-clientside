@@ -3,7 +3,7 @@
     justify-content: 
 } */
 
-span{
+.buttonContainer{
     display: flex;
-    justify-content: 
+    justify-content:center;
 }
