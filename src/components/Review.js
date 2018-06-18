@@ -16,7 +16,7 @@ class MyForm extends React.Component {
 
 
 
-      post = (data) => {
+  post = (data) => {
 
 
       const url = 'http://localhost:3000/reviews'
@@ -99,11 +99,6 @@ class MyForm extends React.Component {
       // console.log('contnet', content)
       fetch(url, {
         method: 'delete',
-      //   body: JSON.stringify(content),
-      //   headers: {
-      //     'Accept': 'application/json',
-      //     'Content-Type': 'application/json'
-      //   }
       })
       .then(resp => resp.json())
       .then(allReviews => {
