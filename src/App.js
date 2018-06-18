@@ -8,6 +8,7 @@ import Footer from './components/Footer.js';
 import Header from './components/Header.js';
 import Checkout from './components/Checkout';
 import MyForm from './components/Review';
+import Reviews from './components/Reviews';
 
 class App extends Component {
   state = {
@@ -72,7 +73,8 @@ class App extends Component {
             total={this.state.cart.total}
         />
        
-      <MyForm/>
+      {/* <MyForm/> */}
+      <Reviews/>
       <Footer />
     </div>
     );
