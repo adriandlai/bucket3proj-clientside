@@ -55,6 +55,10 @@ blockquote, q {
 	display:flex;
 	justify-content: center
 }
+
+html {
+	font-family: sans-serif;
+}
 /* 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;

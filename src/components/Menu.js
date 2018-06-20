@@ -64,10 +64,12 @@ class Menu extends Component {
         <Card.Group itemsPerRow = '3'>
           {this.props.menu.menu.map((item, index) => {
             return (    
-            <Card menucard = {item}
+            // <Card menucard = {item}
+            <Card
                  indexId = {index}
                  >
-                <Card.Content menu = {item}>
+                {/* <Card.Content menu = {item}> */}
+                <Card.Content>
                   <Image floated='right' size='large' src= {item.picture_url} />
                   <Card.Header>
                     {item.product_name}

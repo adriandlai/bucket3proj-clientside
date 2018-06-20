@@ -2,15 +2,13 @@ import React from 'react';
 import axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
 import './Checkout.css';
-
 import STRIPE_PUBLISHABLE from '../constants/stripe';
 import PAYMENT_SERVER_URL from '../constants/server';
 
-// const CURRENCY = 'EUR';
+
 const CURRENCY = 'usd';
 
 
-// const fromEuroToCent = amount => amount * 100;
 
 const fromEuroToCent = amount => parseInt(amount * 100);
 

@@ -21,6 +21,7 @@ class App extends Component {
   updateCart = (cart) => {
     console.log('cart', cart)
     console.log('cartJsx', typeof cart.total)
+    cart.total = (cart.total).toFixed(2)
     this.setState(
       {cart}
     )

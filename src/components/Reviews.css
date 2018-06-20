@@ -1,0 +1,20 @@
+.form{
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center
+
+}
+h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child {
+    margin-top: 1em;
+}
+
+#submit-button {
+    width: 20%;
+    margin: 0 auto;
+}
+
+label{
+    margin: 1em 0 .28571429rem 0
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Header, Table, Form, Input, TextArea, Button, Icon } from 'semantic-ui-react'
+import './Reviews.css'; 
 
 
 class Reviews extends React.Component {
@@ -108,12 +109,15 @@ class Reviews extends React.Component {
         const isLoaded = this.state.isLoaded
         return (
           <div>
+          <h1 className = "form">Enter Review</h1>  
             <Form onSubmit={this.handleSubmit}>
               <Form.Input fluid label='First name' placeholder='Name' 
               name= "name" value={this.state.name} onChange={this.handleChange}/>
               <Form.TextArea label='Review' placeholder='Tell us what you think'
                name="review" value={this.state.review} onChange={this.handleChange} />
-              <Form.Button>Submit Your Review</Form.Button>
+              {/* <Form.Button class="positive ui button" class="ui red button">
+                Submit Your Review</Form.Button> */}
+              <button class="positive ui button" id='submit-button'>Submit your Review</button>
             </Form>
           {/* <form onSubmit={this.handleSubmit}>
           <label>Wass yo name?!?!? </label>  
