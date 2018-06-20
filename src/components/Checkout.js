@@ -1,25 +1,22 @@
-import React from 'react';
-import axios from 'axios';
-import StripeCheckout from 'react-stripe-checkout';
-import './Checkout.css';
-import STRIPE_PUBLISHABLE from '../constants/stripe';
-import PAYMENT_SERVER_URL from '../constants/server';
+import React from 'react'
+import axios from 'axios'
+import StripeCheckout from 'react-stripe-checkout'
+import './Checkout.css'
+import STRIPE_PUBLISHABLE from '../constants/stripe'
+import PAYMENT_SERVER_URL from '../constants/server'
 
 
-const CURRENCY = 'usd';
-
-
-
-const fromEuroToCent = amount => parseInt(amount * 100);
+const CURRENCY = 'usd'
+const fromEuroToCent = amount => parseInt(amount * 100)
 
 
 const successPayment = data => {
-  alert('Payment Successful');
+  alert('Payment Successful')
 };
 
 const errorPayment = data => {
  console.log('errorData', data)
-  alert('Payment Error');
+  alert('Payment Error')
 };
 
 const onToken = (amount, description) => token =>
@@ -31,7 +28,7 @@ const onToken = (amount, description) => token =>
       amount: fromEuroToCent(amount)
     })
     .then(successPayment)
-    .catch(errorPayment);
+    .catch(errorPayment)
 
 const Checkout = ({ name, description, amount }) =>
 {
@@ -49,4 +46,4 @@ const Checkout = ({ name, description, amount }) =>
   )
 }
 
-export default Checkout;
+export default Checkout
