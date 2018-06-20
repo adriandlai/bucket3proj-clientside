@@ -1,14 +1,11 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Menu from './components/Menu.js';
-// import Cart from './components/Cart.js';
-import Carts from './components/Carts.js';
-import Footer from './components/Footer.js';
-import Header from './components/Header.js';
-import Checkout from './components/Checkout';
-import MyForm from './components/Review';
-import Reviews from './components/Reviews';
+import React, { Component } from 'react'
+import './App.css'
+import Menu from './components/Menu.js'
+import Carts from './components/Carts.js'
+import Footer from './components/Footer.js'
+import Header from './components/Header.js'
+import Checkout from './components/Checkout'
+import Reviews from './components/Reviews'
 
 class App extends Component {
   state = {
@@ -19,8 +16,6 @@ class App extends Component {
   }
 
   updateCart = (cart) => {
-    console.log('cart', cart)
-    console.log('cartJsx', typeof cart.total)
     cart.total = (cart.total).toFixed(2)
     this.setState(
       {cart}
@@ -28,7 +23,7 @@ class App extends Component {
   }
 
   fetchMenu = () => {
-    const apiURL = 'http://localhost:3000/menu';
+    const apiURL = 'https://b3projbackend.herokuapp.com/menu'
 
     return fetch(apiURL)
       .then(response => response.json())
@@ -40,7 +35,7 @@ class App extends Component {
   }
 
   fetchCart = () => {
-    const apiURL = 'http://localhost:3000/cart';
+    const apiURL = 'https://b3projbackend.herokuapp.com/cart'
 
     return fetch(apiURL)
       .then(response => response.json())
@@ -66,17 +61,14 @@ class App extends Component {
       <Header />
       <main>
         {isMenuLoaded && <Menu menu={this.state.menu} updateCart = {this.updateCart} />}
-        {/* {isCartLoaded && <Cart cart = {this.state.cart}/>} */}
         {isCartLoaded && <Carts cart = {this.state.cart}/>}
       </main>
       <Checkout
-            name={'The Road to learn React'}
-            description={'Only the Book'}
+            name={'BizEatz'}
+            description={'Healthy Eating Made Easy!'}
             amount={this.state.cart.total}
             total={this.state.cart.total}
         />
-       
-      {/* <MyForm/> */}
       <Reviews/>
       <Footer />
     </div>
@@ -84,7 +76,7 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App
 
 
 

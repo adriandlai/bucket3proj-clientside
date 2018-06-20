@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { Icon, Label, Menu, Table } from 'semantic-ui-react'
-import './Carts.css'; 
+import './Carts.css' 
 
 
 class Carts extends Component {
     constructor(props) {
-        super(props);
+        super(props)
     }
 
 render() {
@@ -42,7 +42,7 @@ render() {
         <Table.HeaderCell colSpan='3'>
           <Menu floated='right' pagination>
             <Menu.Item as='a' icon>Total</Menu.Item>
-            {this.props.cart.total ? <Menu.Item as='a'>{"$" + this.props.cart.total}</Menu.Item> : null}
+            {this.props.cart.total ? <Menu.Item as='a'>{"$" +this.props.cart.total}</Menu.Item> : null}
           </Menu>
         </Table.HeaderCell>
       </Table.Row>
@@ -56,5 +56,5 @@ render() {
 }
 
 
-export default Carts;
+export default Carts
 
